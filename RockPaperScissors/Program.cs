@@ -26,6 +26,28 @@ namespace RockPaperScissors
                     Console.WriteLine("Ошибка! Пожалуйста, выберите камень, ножницы или бумагу");
                     continue;
                 }
+
+                int computerChoiceIndex = random.Next(choices.Length);
+                string computerChoice = choices[computerChoiceIndex];
+                Console.WriteLine($"Ответ компьютера: {computerChoice}");
+
+                if (userChoice == computerChoice)
+                {
+                    Console.WriteLine("Ничья!");
+                }
+                else if ((userChoice == "камень" && computerChoice == "ножницы")
+                    || (userChoice == "ножницы" && computerChoice == "бумага")
+                        || (userChoice == "бумага" && computerChoice == "камень"))
+                {
+                    Console.WriteLine("Вы выиграли!");
+                }
+                else
+                {
+                    Console.WriteLine("Вы проиграли!");
+                }
+
+                Console.WriteLine("Хотите сыграть снова? Ответы: y/n");
+                playAgain = Console.ReadLine().ToLower();
             }
             while (playAgain == "y");
         }
